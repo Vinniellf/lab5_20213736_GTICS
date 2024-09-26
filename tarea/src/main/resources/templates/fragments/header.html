@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Flores</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .highlight {
+            background-color: #ffeb3b;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .flower-img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .nav-link {
+            margin-left: auto;
+        }
+        .nav-item img {
+            margin-left: 10px;
+        }
+        .total-flores {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- NAVBAR -->
+
+    <header class="text-center my-4" th:fragment="nav_bar" id="page-topbar">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="/tarea/profesionales">
+                <img src="https://static.vecteezy.com/system/resources/previews/005/072/571/original/modern-health-clinic-logo-vector.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav">
+                    <a class="nav-item nav-link active" href="/lab/profesionales">Profesionales <span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="/lab/citas">Citas</a>
+                    <a class="nav-item nav-link" href="/lab/pacientes">Pacientes</a>
+                    <a class="nav-item nav-link" href="/lab/foro">Foro</a>
+                    <a class="nav-item nav-link" href="/lab/recursos">Recursos</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+
+
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

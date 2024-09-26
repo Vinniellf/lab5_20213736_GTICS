@@ -16,7 +16,7 @@ public class BaseController {
         this.baseRepository = baseRepository;
     }
 
-    @GetMapping("/sub1")
+    @GetMapping("/profesionales")
     public String sub1(Model model) {
         return "plantilla";
     }
