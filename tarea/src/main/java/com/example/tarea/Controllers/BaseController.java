@@ -56,6 +56,10 @@ public class BaseController {
         model.addAttribute("sedes", sedes);
         return "plantilla";}
 
+    @GetMapping("/mostrarReservar")
+    public String mostrarReservar(Model model) {
+        return "reservarCita";
+    }
 
     /*@GetMapping("/editar")
     public String editarBase(Model model,
