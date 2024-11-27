@@ -1,38 +1,61 @@
 package com.example.tarea.Controllers;
 
-import ch.qos.logback.core.model.Model;
-import com.example.tarea.Repositories.BaseRepository;
+import com.example.tarea.Entities.Areas;
+import com.example.tarea.Entities.Fechas;
+import com.example.tarea.Entities.Profesionales;
+import com.example.tarea.Entities.Sedes;
+import com.example.tarea.Repositories.*;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/tarea")
 public class BaseController {
 
     final BaseRepository baseRepository;
+    final ProfesionalRepository profesionalRepository;
+    final AreasRepository areasRepository;
+    final FechasRepository fechasRepository;
+    final SedesRepository sedesRepository;
 
-    public BaseController(BaseRepository baseRepository) {
+    public BaseController(BaseRepository baseRepository, ProfesionalRepository profesionalRepository, AreasRepository areasRepository, FechasRepository fechasRepository, SedesRepository sedesRepository) {
         this.baseRepository = baseRepository;
+        this.profesionalRepository = profesionalRepository;
+        this.areasRepository = areasRepository;
+        this.fechasRepository = fechasRepository;
+        this.sedesRepository = sedesRepository;
     }
 
-    @GetMapping("/sub1")
+    @GetMapping("/profesionales")
     public String sub1(Model model) {
+        List<Profesionales> profesionales = profesionalRepository.findAll();
+        List<Areas> areas = areasRepository.findAll();
+        List<Sedes> sedes = sedesRepository.findAll();
+        model.addAttribute("profesionales", profesionales);
+        model.addAttribute("areas", areas);
+        model.addAttribute("sedes", sedes);
+
         return "plantilla";
     }
 
-    /*GetMapping("/sub2")
-    public String sub2(@RequestParam("tipo") Long  tipo,
-                        @RequestParam("color") Long  color,
-                        @RequestParam("ocasion") Long  ocasion, Model model){
-        //SUMAR LISTAS
-        List<Flores> floresLis1 = floresRepository.findAll();
-        List<Flores> floresLis2 = floresRepository.findAll();
-        List<Flores> listaSumada = new ArrayList<>(floresLis1);
+    @GetMapping("/filtrar")
+    public String filtrar(@RequestParam("area") Long  area,
+                        @RequestParam("sede") Long  sede, Model model){
 
-        model.addAttribute("cosas", listaSumada);
-        return "plantilla";
-     */
+        List<Profesionales> profesionales = profesionalRepository.finByAreaAndSede(area, sede);
+        List<Areas> areas = areasRepository.findAll();
+        List<Sedes> sedes = sedesRepository.findAll();
+
+        model.addAttribute("profesionales", profesionales);
+        model.addAttribute("areas", areas);
+        model.addAttribute("sedes", sedes);
+        return "plantilla";}
+
 
     /*@GetMapping("/editar")
     public String editarBase(Model model,
